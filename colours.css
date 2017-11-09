@@ -1,0 +1,48 @@
+.mbcz-darkness-1,.mbcz-hover-darkness-1:hover{
+    color:#fff!important;
+    background-color: #2E4272!important;
+}
+.mbcz-darkness-2, .mbcz-hover-darkness-2:hover{
+    color:#000!important;
+    background-color: #403075!important;
+}
+.mbcz-darkness-3, .mbcz-hover-darkness-3:hover{
+    color:#fff!important;
+    background-color: #226666!important;
+}
+.mbcz-darkness-4,.mbcz-hover-darkness-4:hover{
+    color:#fff!important;
+    background-color: #0B2081!important;
+}
+.mbcz-darkness-5, .mbcz-hover-darkness-5:hover{
+    color:#fff!important;
+    background-color: #061763!important;
+}
+
+
+
+
+
+
+/* Standard syntax */
+
+
+/*!* The animation code *!*/
+/*@keyframes example {*/
+    /*from {*/
+        /*color:white;*/
+        /*border-bottom-color: white;*/
+    /*}*/
+    /*to {*/
+        /*color:gray;*/
+        /*border-bottom-color: #272d4e;*/
+    /*}*/
+/*}*/
+
+/*!* The element to apply the animation to *!*/
+/*.mbcz-fixed-menu-item:hover {*/
+    /*animation-name: example;*/
+    /*animation-duration: 4s;*/
+/*}*/
+
+

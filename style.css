@@ -1,0 +1,33 @@
+body {
+    font-family: 'Martel Sans', sans-serif;
+}
+h1,h2,h3,h4,h5,h6,.w3-bar,h1,button, .mbcz-title-text{
+    font-family: 'Playfair Display', sans-serif;
+}
+.mbcz-title-text {
+    font-size:30px;
+    color:white;
+    text-shadow: 2px 2px 8px black;
+    /*,1px 0px gray,0px 1px gray,-1px 0px gray,0px -1px gray;*/
+}
+.mbcz-naglowek{
+    background-color: gray;
+    padding:16px;
+}
+#headerimg{
+    background-position: center;
+    background-size: cover;
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+.row {
+    display: flex; /* equal height of the children */
+}
+
+.col {
+    flex: 1; /* additionally, equal width */
+
+    padding: 1em;
+    border: solid;
+}
