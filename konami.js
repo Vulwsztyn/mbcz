@@ -39,7 +39,6 @@ document.addEventListener('keydown', function(e) {
 });
 
 function konami() {
-    //TODO: naprawić
     document.getElementById("img01").src = 'https://i.imgur.com/40c6kDF.jpg';
     document.getElementById("modal01").style.display = "block";
 }

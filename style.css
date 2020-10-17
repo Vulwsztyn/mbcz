@@ -31,3 +31,46 @@ h1,h2,h3,h4,h5,h6,.w3-bar,h1,button, .mbcz-title-text{
     padding: 1em;
     border: solid;
 }
+.mbcz-upper *{
+    text-transform: uppercase!important;
+}
+
+
+.mbcz-center{
+    margin: auto!important;
+    text-align: center!important;
+    text-transform: uppercase!important;
+}
+.textbgc0{
+    background-color: rgba(255, 153, 0,0.8);
+}
+.mbcz-text-zolty{
+    background-color: rgba(255, 215,0,0.5);
+}
+.mbcz-text-zielony{
+    background-color: rgba(32, 125, 57,0.7);
+    color:white;
+}
+.textbgc3{
+    background-color: #1E90FF;
+}
+.mbcz-text-fiolet{
+    background-color: rgba(75,0,130,0.7);
+    color:white;
+}
+.textbgc5{
+    background-color: 	#D8BFD8;
+}
+.textbgc6{
+    background-color: #6495ED;
+}
+.textbgc7{
+    background-color: #008B8B;
+}
+.mbcz-text-gold{
+    background-color: rgba(255, 153, 0,1);
+}
+.mbcz-text-niebieski{
+    background-color: rgba(0,0,205,0.7);
+    color:white;
+}

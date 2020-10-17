@@ -1,0 +1,122 @@
+<html>
+<style>
+    textarea {
+        overflow-y: scroll;
+        height: 300px;
+        width: 1000px;
+        resize: none; /* Remove this if you want the user to resize the textarea */
+    }
+</style>
+<body>
+Input:<br>
+<textarea id="Input" cols="40" rows="50" >
+ 10 10
+ 4 88 8 68 6 94 5 99 1 67 2 89 9 77 7 99 0 86 3 92
+ 5 72 3 50 6 69 4 75 2 94 8 66 0 92 1 82 7 94 9 63
+ 9 83 8 61 0 83 1 65 6 64 5 85 7 78 4 85 2 55 3 77
+ 7 94 2 68 1 61 4 99 3 54 6 75 5 66 0 76 9 63 8 67
+ 3 69 4 88 9 82 8 95 0 99 2 67 6 95 5 68 7 67 1 86
+ 1 99 4 81 5 64 6 66 8 80 2 80 7 69 9 62 3 79 0 88
+ 7 50 1 86 4 97 3 96 0 95 8 97 2 66 5 99 6 52 9 71
+ 4 98 6 73 3 82 2 51 1 71 5 94 7 85 0 62 8 95 9 79
+ 0 94 6 71 3 81 7 85 1 66 2 90 4 76 5 58 8 93 9 97
+ 3 50 0 59 1 82 8 67 7 56 9 96 6 58 4 81 5 59 2 96
+
+</textarea>
+<br>
+Output:<br>
+<textarea id="Output" cols="40" rows="50" >
+903
+0	88	156	250	349	416	505	582	681	767
+0	72	122	191	266	360	426	518	600	694
+0	83	144	227	292	356	441	519	604	659
+0	94	162	223	322	376	451	517	593	656
+0	88	176	258	353	452	519	614	682	749
+0	99	180	244	310	390	470	539	601	680
+94	144	230	327	423	518	615	681	780	832
+89	187	260	342	393	464	558	643	705	800
+0	94	165	246	331	397	487	563	621	714
+69	119	178	260	327	383	479	537	618	677
+</textarea>
+<br>
+<button type="button" onclick="drawChart()" name="Start" >Start</button>
+<br>
+<div id="chart_machines"></div>
+<br>
+<div id="chart_tasks"></div>
+</body>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script>
+    google.charts.load("current", {packages:["timeline"]});
+
+    function drawChart() {
+
+        var container = document.getElementById('chart_machines');
+        var chart = new google.visualization.Timeline(container);
+        var dataTable = [];
+        for (var i = 0; i < 2; i++) {
+            dataTable[i] = new google.visualization.DataTable();
+            dataTable[i].addColumn({type: 'string', id: 'Position'});
+            dataTable[i].addColumn({type: 'string', id: 'Name'});
+            dataTable[i].addColumn({type: 'date', id: 'Start'});
+            dataTable[i].addColumn({type: 'date', id: 'End'});
+
+        }
+
+        var inputLines = document.getElementById("Input").value.split('\n');
+        var outputLines = document.getElementById("Output").value.split('\n');
+
+        var numberPattern = /\d+/g;
+
+        task = 0;
+        do {
+            if (inputLines[task] == null) break;
+            inputLines[task] = inputLines[task].match(numberPattern);
+            if (inputLines[task] == null) break;
+            for (var j = 0; j < inputLines[task].length; j++)
+                inputLines[task][j] = parseInt(inputLines[task][j]);
+            task++;
+        } while (task <= inputLines[0][0]);
+        task = 0;
+        do {
+            if (outputLines[task] == null) break;
+            outputLines[task] = outputLines[task].match(numberPattern);
+            if (outputLines[task] == null) break;
+            for (var j = 0; j < outputLines[task].length; j++)
+                outputLines[task][j] = parseInt(outputLines[task][j]);
+            task++;
+        } while (task <= inputLines[0][1]);
+        console.log(inputLines);
+        console.log(outputLines);
+        var numberOfTasks = inputLines[0][0];
+        var numberOfMachines = inputLines[0][1];
+
+        var list = [];
+        var lineNum = 0;
+
+        for (var task = 0; task < numberOfTasks; task++) {
+            for (var machine = 0; machine < inputLines[task+1].length; machine += 2) {
+                list.push([]);
+                list[lineNum].push('Zadanie ' + task.toString());
+                list[lineNum].push("Maszyna " + inputLines[task+1][machine].toString())
+                var startTime = outputLines[task+1][machine/2];
+                list[lineNum].push(new Date(2000 + startTime, 1, 1));
+                // for (var k = 0; k < inputLines[outputLines[task][machine]].length; k += 2) {
+                //     if (inputLines[outputLines[task][machine]][k] == task) {
+                //         var howLong = inputLines[outputLines[task][machine]][k + 1];
+                var howLong=inputLines[task+1][machine+1];
+                list[lineNum].push(new Date(2000 + startTime + howLong, 1, 1));
+                lineNum++;
+            }
+        }
+        console.log(list);
+        dataTable[0].addRows(list);
+        chart.draw(dataTable[0]);
+        var options = {
+            height: 700
+        }
+        chart.draw(dataTable[0], options);
+    }
+
+</script>
+</html>
